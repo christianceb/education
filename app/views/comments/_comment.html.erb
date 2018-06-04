@@ -1,13 +1,16 @@
 <div class="comment">
   <blockquote>
-      <% if comment.rating.present? %>
-      <span class='pull-right'>
-        <%= comment.rating %> / 5
-        (<%= literal_rating( comment.rating ) %>)
-      </span>
-    <% end %>
     <p><%= comment.body %></p>
-    <footer><cite title="<%= comment.commenter %>"><%= comment.commenter %></cite></footer>
+    <footer>
+      <cite title="<%= comment.commenter %>"><%= comment.commenter %></cite>
+      
+      <% if comment.rating.present? %>
+        <span class='pull-right'>
+          <%= comment.rating %> / 5
+          (<%= literal_rating( comment.rating ) %>)
+        </span>
+      <% end %>
+    </footer>
   </blockquote>
   
   <%= link_to 'Delete', [comment.classis, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', role: :button %>

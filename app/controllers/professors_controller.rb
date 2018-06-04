@@ -1,4 +1,6 @@
 class ProfessorsController < ApplicationController
+  include ProfessorsHelper
+
   def index
     @professors = Professor.all
   end
@@ -20,16 +22,15 @@ class ProfessorsController < ApplicationController
   def show
     @professor = Professor.find(params[:id])
 
-    # TODO: Try not to use raw fragments of SQL queries?
-    @classes = Classis
-      .select( 'subjects.title' )
-      .where( "professor_id = ?", @professor.id )
-      .joins( :subject )
+    # TODO: Work on shortcut for editing/deleting classes from professor show/edit page?
+
+    @classes = get_classes_by_professor( @professor )
   end
 
   def edit
-    @subjects = Subject.all
     @professor = Professor.find(params[:id])
+    
+    @classes = get_classes_by_professor( @professor )
   end
 
   def update

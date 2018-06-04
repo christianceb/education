@@ -20,6 +20,7 @@ class SubjectsController < ApplicationController
   def show
     @subject = Subject.find( params[:id] )
     
+    # TODO: Work on shortcut for editing/deleting classes from subject show/edit page?
     # TODO: Try not to use raw fragments of SQL queries?
     @classes = Classis
       .select( "classes.id, professors.name, professors.id as 'professor_id'" )

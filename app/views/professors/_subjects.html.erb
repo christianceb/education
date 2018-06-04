@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-xs-12">
+    <p><em>You may only create, delete or modify classes in individual subject pages - for now. </em></p>
+
+    <% if @classes.any? %>
+      <h2>Subjects taught by this professor</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Subject Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @classes.each do |classis| %>
+            <tr>
+              <td><%= classis.title %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p><em>No subjects being taught by this professor.</em></p>
+    <% end %>
+  </div>
+</div>

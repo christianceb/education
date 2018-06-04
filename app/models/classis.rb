@@ -6,4 +6,7 @@ class Classis < ApplicationRecord
   belongs_to :subject
   belongs_to :professor
   has_many :comments, dependent: :destroy
+  
+  validates :subject, presence: true
+  validates :professor, presence: true
 end

@@ -22,10 +22,13 @@ class ClassesController < ApplicationController
 
   def create
     @classis = Classis.new( classis_params )
+    # TODO: Validate if matching subject and professor already exists!
 
     if @classis.save
       redirect_to @classis.subject
     else
+      # TODO: Validation is messed up. Think it has something to do with the :subject_id and :subject
+      # switching still not sorted out.
       render 'new'
     end
   end

@@ -1,14 +1,23 @@
 <%= form_with model: @classis, local: true do |form| %>
-  <p>
+  <% if @classis.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@classis.errors.count, "error") %> prohibited this class from being saved":</h2>
+      <ul>
+        <% @classis.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class='form-group'>
     <%= form.label :professor %>
     <%= form.select :professor_id, options_from_collection_for_select( @professors, :id, :name ), { :prompt => :select } , { :class => 'form-control' } %>
-  </p>
+  </div>
 
-  <p>
+  <div class='form-group'>
     <%= form.label :subject %>
     <%= form.select :subject_id, options_from_collection_for_select( @subjects, :id, :title ), { :prompt => :select } , { :class => 'form-control' } %>
-  </p>
-
+  </div>
 
   <%= link_to 'Back', subjects_path, class: 'btn btn-danger', role: :button %>
   <%= form.submit nil, { class: 'btn btn-primary', role: :button } %>
