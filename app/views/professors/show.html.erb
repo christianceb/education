@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1><%= @professor.name %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <% if @classes.any? %>
+      <h2>Subjects taught by this professor</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Subject Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @classes.each do |classis| %>
+            <tr>
+              <td><%= classis.title %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p><em>No subjects being taught by this professor.</em></p>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to 'Back', professors_path, class: 'btn btn-primary', role: :button %>
+  </div>
+</div>

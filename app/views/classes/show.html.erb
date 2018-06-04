@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1><%= @classis.subject.title %> - <%= @classis.professor.name %></h1>
+  </div>
+  <div class="col-xs-12">
+    <dl>
+      <dt>Description:</dt>
+      <dd><%= @classis.subject.description %></dd>
+    </dl>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <% if @average_rating.present? %>
+      <h2>Average rating: <%= @average_rating %> / 5.0 ( <%= @literal_rating %> ) </h2>
+    <% else %>
+      <p><em>No ratings in this class. Be the first to rate by leaving a comment!</em></p>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-lg-6">
+    <h2>Comments on this class</h2>
+    <% if @classis.comments.any? %>
+      <div class='comments'>
+        <%= render @classis.comments %>
+      </div>
+    <% else %>
+      <p>No comments in this class. Be the first to comment!</p>
+    <% end %>
+  </div>
+  
+  <div class="col-xs-12 col-lg-6">
+    <%= render 'comments/form' %>
+  </div>
+</div>
+
+<%= link_to 'Back', subject_path( @classis.subject ), { class: 'btn btn-primary', role: :button } %>

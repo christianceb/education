@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1><%= @subject.title %></h1>
+  </div>
+  <div class="col-xs-12">
+    <dl>
+      <dt>Description:</dt>
+      <dd><%= @subject.description %></dd>
+    </dl>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= render 'classes' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <%= link_to 'Back', subjects_path, class: 'btn btn-primary', role: :button %>
+  </div>
+</div>

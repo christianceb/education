@@ -1,0 +1,15 @@
+<%= form_with model: @classis, local: true do |form| %>
+  <p>
+    <%= form.label :professor %>
+    <%= form.select :professor_id, options_from_collection_for_select( @professors, :id, :name ), { :prompt => :select } , { :class => 'form-control' } %>
+  </p>
+
+  <p>
+    <%= form.label :subject %>
+    <%= form.select :subject_id, options_from_collection_for_select( @subjects, :id, :title ), { :prompt => :select } , { :class => 'form-control' } %>
+  </p>
+
+
+  <%= link_to 'Back', subjects_path, class: 'btn btn-danger', role: :button %>
+  <%= form.submit nil, { class: 'btn btn-primary', role: :button } %>
+<% end %>
